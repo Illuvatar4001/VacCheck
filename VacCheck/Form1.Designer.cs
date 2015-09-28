@@ -31,6 +31,7 @@
             this.loaddumps = new System.Windows.Forms.Button();
             this.vacs = new System.Windows.Forms.Button();
             this.settings = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // loaddumps
@@ -62,17 +63,28 @@
             this.settings.Text = "Settings";
             this.settings.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(59, 121);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox1.Size = new System.Drawing.Size(411, 215);
+            this.textBox1.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 83);
+            this.ClientSize = new System.Drawing.Size(539, 370);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.settings);
             this.Controls.Add(this.vacs);
             this.Controls.Add(this.loaddumps);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -81,6 +93,7 @@
         private System.Windows.Forms.Button loaddumps;
         private System.Windows.Forms.Button vacs;
         private System.Windows.Forms.Button settings;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

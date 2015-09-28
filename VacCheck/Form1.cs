@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace VacCheck
 {
@@ -25,6 +26,22 @@ namespace VacCheck
 
         private void vacs_Click(object sender, EventArgs e)
         {
+
+          
+            Id_GameDataContext mydb = new Id_GameDataContext();
+            var result= from u in mydb.Ids where u.OWban ==true select u;
+            foreach (var item in result)
+            {
+                var gameids = from u in mydb.Relations where u.Player_Id == item.Id1 select u.Game_Id;
+                foreach (var gameid in gameids)
+                {
+                    var map = (from u in mydb.Games where u.Id == gameid select u.map).First();
+                    textBox1.Text = textBox1.Text +" "+ map;
+                }
+                textBox1.Text = textBox1.Text +" "+ item.Steam_ID;
+            }
+            //SqlCommand cmd = new SqlCommand();
+            //SqlDataReader dr;
 
 
         }

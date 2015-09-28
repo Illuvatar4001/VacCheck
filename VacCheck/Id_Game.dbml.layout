@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Id_Game">
+  <DataContextMoniker Name="/Id_GameDataContext" />
+  <nestedChildShapes>
+    <classShape Id="a52ea8eb-c495-4542-b457-24014a89fff1" absoluteBounds="0.75, 0.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/Id_GameDataContext/Game" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c66e5ab7-dd13-41ac-9c9b-efc364c80bab" absoluteBounds="0.765, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="63222194-0596-41ba-8fe9-a11aa83995ae" absoluteBounds="3.75, 0.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/Id_GameDataContext/Relation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="269c852a-7509-4f45-b8b3-b88be3ab1d02" absoluteBounds="3.765, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="90556f65-79ef-4f86-bce0-ff001f0183d2" absoluteBounds="0.75, 3.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/Id_GameDataContext/Id" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0e72d62a-c0e6-4ad6-9f72-28aab8fb34c2" absoluteBounds="0.765, 4.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
