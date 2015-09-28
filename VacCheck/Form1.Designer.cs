@@ -51,6 +51,7 @@
             this.vacs.TabIndex = 1;
             this.vacs.Text = "Inspect Bans";
             this.vacs.UseVisualStyleBackColor = true;
+            this.vacs.Click += new System.EventHandler(this.vacs_Click);
             // 
             // settings
             // 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.IO;
 using System.Web;
+using System.Web.Script.Serialization;
 
 namespace VacCheck
 {
@@ -31,7 +32,7 @@ namespace VacCheck
 
         public string isbanned()
         {
-            // Create a request for the URL. 
+
             WebRequest request = WebRequest.Create(
               "https://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=12A1D1DE83F9932934EDD6DF2BA00463&steamids="+Convert.ToString(steamid));
 
@@ -53,12 +54,10 @@ namespace VacCheck
 
             string responseFromServer = reader.ReadToEnd();
 
+            var ser = new JavaScriptSerializer();
+            GetPlayerBansRespons resp= ser.Deserialize<GetPlayerBansRespons>(responseFromServer);
 
-            throw new Exception();
-
-            reader.Close();
-            response.Close();
-            return responseFromServer;
+            return "This Account has" + Convert.ToString(resp.players[0].NumberOfVACBans) + " " + Convert.ToString(resp.players[0].NumberOfGameBans);
         }
     }
 }
