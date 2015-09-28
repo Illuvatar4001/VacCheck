@@ -56,25 +56,31 @@ namespace VacCheck
                     Console.WriteLine(grundliste);
 
                     string suchbegriff = "map     : ";
-
                     int firstCharacter = grundliste.IndexOf(suchbegriff);
 
-                    Console.WriteLine("First occurrence: {0}", firstCharacter);
+                    string suchbegriff2 = "players";
+                    int lastCharacter = grundliste.IndexOf(suchbegriff2);
+
                     firstCharacter = firstCharacter + 10;
-                    int lastCharacter = firstCharacter;
-                    for (int i = lastCharacter; ; i++)
-                    {
-                        if (grundliste[i] == 'p')
-                        {
-                            lastCharacter = i - 1;
-                            break;
-                        }
 
-                    }
+                    Console.WriteLine("First occurrence: {0}", firstCharacter);
+                    Console.WriteLine("Last occurrence: {0}", lastCharacter);    
+                  
+
+                    string map = grundliste.Substring(firstCharacter, lastCharacter - firstCharacter);
+                    //for (int i = lastCharacter; ; i++)
+                    //{
+                    //    if (grundliste[i] == '1')
+                    //    {
+                    //        lastCharacter = i - 1;
+                    //        break;
+                    //    }
+
+                    //}
 
 
 
-                    string map = grundliste.Substring(firstCharacter, lastCharacter);
+                   
 
                     Console.WriteLine(map);
                     //Console.WriteLine(grundliste[197]);
