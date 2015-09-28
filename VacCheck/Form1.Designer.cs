@@ -41,6 +41,7 @@
             this.loaddumps.TabIndex = 0;
             this.loaddumps.Text = "Load new dumps";
             this.loaddumps.UseVisualStyleBackColor = true;
+            this.loaddumps.Click += new System.EventHandler(this.loaddumps_Click);
             // 
             // vacs
             // 

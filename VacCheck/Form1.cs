@@ -16,5 +16,11 @@ namespace VacCheck
         {
             InitializeComponent();
         }
+
+        private void loaddumps_Click(object sender, EventArgs e)
+        {
+            SteamUser me = new SteamUser("STEAM_0:1:79591186");
+            me.isbanned();
+        }
     }
 }
