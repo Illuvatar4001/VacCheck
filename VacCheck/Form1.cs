@@ -26,8 +26,6 @@ namespace VacCheck
 
         private void vacs_Click(object sender, EventArgs e)
         {
-
-          
             Id_GameDataContext mydb = new Id_GameDataContext();
             var result= from u in mydb.Ids where u.OWban ==true select u;
             foreach (var item in result)
@@ -44,6 +42,44 @@ namespace VacCheck
             //SqlDataReader dr;
 
 
+        }
+
+        private void settings_Click(object sender, EventArgs e)
+        {
+
+            {   // Open the text file using a stream reader.
+                using (StreamReader sr = new StreamReader("c:\\condump001.txt"))
+                {
+                    // Read the stream to a string, and write the string to the console.
+                    String grundliste = sr.ReadToEnd();
+                    Console.WriteLine(grundliste);
+
+                    string suchbegriff = "map     : ";
+
+                    int firstCharacter = grundliste.IndexOf(suchbegriff);
+
+                    Console.WriteLine("First occurrence: {0}", firstCharacter);
+                    firstCharacter = firstCharacter + 10;
+                    int lastCharacter = firstCharacter;
+                    for (int i = lastCharacter; ; i++)
+                    {
+                        if (grundliste[i] == 'p')
+                        {
+                            lastCharacter = i - 1;
+                            break;
+                        }
+
+                    }
+
+
+
+                    string map = grundliste.Substring(firstCharacter, lastCharacter);
+
+                    Console.WriteLine(map);
+                    //Console.WriteLine(grundliste[197]);
+
+                }
+            }
         }
     }
 }

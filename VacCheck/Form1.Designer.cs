@@ -62,6 +62,7 @@
             this.settings.TabIndex = 2;
             this.settings.Text = "Settings";
             this.settings.UseVisualStyleBackColor = true;
+            this.settings.Click += new System.EventHandler(this.settings_Click);
             // 
             // textBox1
             // 
