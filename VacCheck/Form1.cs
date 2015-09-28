@@ -62,6 +62,7 @@ namespace VacCheck
                     int lastCharacter = grundliste.IndexOf(suchbegriff2);
 
                     firstCharacter = firstCharacter + 10;
+                    lastCharacter = lastCharacter - 2;
 
                     Console.WriteLine("First occurrence: {0}", firstCharacter);
                     Console.WriteLine("Last occurrence: {0}", lastCharacter);    
