@@ -55,6 +55,7 @@ namespace VacCheck
                     String grundliste = sr.ReadToEnd();
                     Console.WriteLine(grundliste);
 
+                    // MAP NAME PARESE
                     string suchbegriff = "map     : ";
                     int firstCharacter = grundliste.IndexOf(suchbegriff);
 
@@ -67,23 +68,49 @@ namespace VacCheck
                     Console.WriteLine("First occurrence: {0}", firstCharacter);
                     Console.WriteLine("Last occurrence: {0}", lastCharacter);    
                   
-
                     string map = grundliste.Substring(firstCharacter, lastCharacter - firstCharacter);
-                    //for (int i = lastCharacter; ; i++)
-                    //{
-                    //    if (grundliste[i] == '1')
-                    //    {
-                    //        lastCharacter = i - 1;
-                    //        break;
-                    //    }
 
-                    //}
+                    Console.WriteLine("Map played: {0}", map);
+                    Console.WriteLine("=========================");
 
+                    // STEAM ID PARSE ==============================================
+
+                    string suchbegriff3 = "STEAM";
+                    int thirdCharacter = grundliste.IndexOf(suchbegriff3);
+                    
+
+                    int fourthCharacter = thirdCharacter;
+
+                        for (int i = thirdCharacter; ; i++)
+                        {
+                            if (grundliste[i] == ' ')
+                            {
+                                fourthCharacter = i;
+                                break;
+                            }
+
+                        }
+
+
+
+                    Console.WriteLine("third occurrence: {0}", thirdCharacter);
+                    Console.WriteLine("fourth occurrence: {0}", fourthCharacter);
+
+                    string steamid = grundliste.Substring(thirdCharacter, fourthCharacter - thirdCharacter);
+                    Console.WriteLine("STEAM id: {0}", steamid);
+
+
+                    
+
+
+                    //Console.WriteLine("fourth occurrence: {0}", fourthCharacter);
+                    //string suchbegriff4 = " ";
+                    //int fourthCharacter = grundliste.IndexOf(suchbegriff4);
 
 
                    
 
-                    Console.WriteLine(map);
+                    
                     //Console.WriteLine(grundliste[197]);
 
                 }
