@@ -49,40 +49,31 @@ namespace VacCheck
         {
 
             {   // Open the text file using a stream reader.
-                using (StreamReader sr = new StreamReader("c:\\condump001.txt"))
+                using (StreamReader sr = new StreamReader(@"E:\Visual Studio Projects\C#\VAc\VacCheck\VacCheck\condump001.txt"))
                 {
                     // Read the stream to a string, and write the string to the console.
                     String grundliste = sr.ReadToEnd();
                     Console.WriteLine(grundliste);
 
                     string suchbegriff = "map     : ";
-                    int firstCharacter = grundliste.IndexOf(suchbegriff);
-
-                    string suchbegriff2 = "players";
-                    int lastCharacter = grundliste.IndexOf(suchbegriff2);
-
-                    firstCharacter = firstCharacter + 10;
-
-                    Console.WriteLine("First occurrence: {0}", firstCharacter);
-                    Console.WriteLine("Last occurrence: {0}", lastCharacter);    
+                    int firstCharacter = grundliste.IndexOf(suchbegriff)+8;
+                    int lastCharacter;
                   
+                    for (int i = firstCharacter; ; i++)
+                    {
+                        if (Char.IsWhiteSpace(grundliste[i] ))
+                        {
+                           lastCharacter = i - 1;
+                           break;
+                      }
+
+                    }
+
+
 
                     string map = grundliste.Substring(firstCharacter, lastCharacter - firstCharacter);
-                    //for (int i = lastCharacter; ; i++)
-                    //{
-                    //    if (grundliste[i] == '1')
-                    //    {
-                    //        lastCharacter = i - 1;
-                    //        break;
-                    //    }
 
-                    //}
-
-
-
-                   
-
-                    Console.WriteLine(map);
+                    textBox1.Text = map;
                     //Console.WriteLine(grundliste[197]);
 
                 }
