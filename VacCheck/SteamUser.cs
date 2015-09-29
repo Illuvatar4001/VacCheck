@@ -19,10 +19,17 @@ namespace VacCheck
 
         public static Int64 getSteamId64(string SteamdID32)
         {
-            var splitid=SteamdID32.Split(':');
-            Int64 lowbit = Convert.ToInt64(splitid[1]);
-            Int64 higherbits = Convert.ToInt64(splitid[2]);
-            return 76561197960265728 + (2 * higherbits) + lowbit;
+            try
+            {
+                var splitid = SteamdID32.Split(':');
+                Int64 lowbit = Convert.ToInt64(splitid[1]);
+                Int64 higherbits = Convert.ToInt64(splitid[2]);
+                return 76561197960265728 + (2 * higherbits) + lowbit;
+            }
+            catch
+            {
+                return -1;
+            }
         }
 
         public SteamUser(string SteamdID32)
