@@ -75,11 +75,12 @@ namespace VacCheck
 
                     // STEAM ID PARSE ==============================================
 
-                    List<string> steamlist = new List<string>();
+                    List<long> steamlist = new List<long>();
                     
                     string suchbegriff3 = "STEAM";
                     int endpunkt = 0;
                     int startpunkt = 0;
+                    long steamid64;
 
                     while (true)
                     {
@@ -107,7 +108,9 @@ namespace VacCheck
                             }
 
                         string steamid = grundliste.Substring(startpunkt, endpunkt - startpunkt);
-                        steamlist.Add(steamid);
+                        steamid64 = SteamUser.getSteamId64(steamid);
+
+                        steamlist.Add(steamid64);
                         Console.WriteLine("STEAM id: {0}", steamid);
                                          
 
@@ -121,8 +124,8 @@ namespace VacCheck
                         steamlist.ForEach(i => Console.WriteLine(i));                        
                         
 
-
-
+                        
+                        
 
 
                         //Console.WriteLine("fourth occurrence: {0}", fourthCharacter);
