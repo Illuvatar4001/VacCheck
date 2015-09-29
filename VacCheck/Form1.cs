@@ -22,22 +22,22 @@ namespace VacCheck
         private void loaddumps_Click(object sender, EventArgs e)
         {
             SteamUser me = new SteamUser("STEAM_0:1:79591186");
-            loaddumps.Text= me.isbanned();
+            loaddumps.Text = me.isbanned();
         }
 
         private void vacs_Click(object sender, EventArgs e)
         {
             Id_GameDataContext mydb = new Id_GameDataContext();
-            var result= from u in mydb.Ids where u.OWban ==true select u;
+            var result = from u in mydb.Ids where u.OWban == true select u;
             foreach (var item in result)
             {
                 var gameids = from u in mydb.Relations where u.Player_Id == item.Id1 select u.Game_Id;
                 foreach (var gameid in gameids)
                 {
                     var map = (from u in mydb.Games where u.Id == gameid select u.map).First();
-                    textBox1.Text = textBox1.Text +" "+ map;
+                    textBox1.Text = textBox1.Text + " " + map;
                 }
-                textBox1.Text = textBox1.Text +" "+ item.Steam_ID;
+                textBox1.Text = textBox1.Text + " " + item.Steam_ID;
             }
             //SqlCommand cmd = new SqlCommand();
             //SqlDataReader dr;
@@ -53,7 +53,7 @@ namespace VacCheck
                 {
                     // Read the stream to a string, and write the string to the console.
                     String grundliste = sr.ReadToEnd();
-                    Console.WriteLine(grundliste);
+                    // Console.WriteLine(grundliste);
 
                     // MAP NAME PARESE
                     string suchbegriff = "map     : ";
@@ -66,8 +66,8 @@ namespace VacCheck
                     lastCharacter = lastCharacter - 2;
 
                     Console.WriteLine("First occurrence: {0}", firstCharacter);
-                    Console.WriteLine("Last occurrence: {0}", lastCharacter);    
-                  
+                    Console.WriteLine("Last occurrence: {0}", lastCharacter);
+
                     string map = grundliste.Substring(firstCharacter, lastCharacter - firstCharacter);
 
                     Console.WriteLine("Map played: {0}", map);
@@ -75,46 +75,68 @@ namespace VacCheck
 
                     // STEAM ID PARSE ==============================================
 
-                    string suchbegriff3 = "STEAM";
-                    int thirdCharacter = grundliste.IndexOf(suchbegriff3);
+                    List<string> steamlist = new List<string>();
                     
+                    string suchbegriff3 = "STEAM";
+                    int endpunkt = 0;
+                    int startpunkt = 0;
 
-                    int fourthCharacter = thirdCharacter;
+                    while (true)
+                    {
+                        
 
-                        for (int i = thirdCharacter; ; i++)
+                        
+                        startpunkt = grundliste.IndexOf(suchbegriff3, endpunkt);
+
+                        if (startpunkt == -1)
                         {
-                            if (grundliste[i] == ' ')
+                            break;
+                        }
+                        
+
+                            for (int i = startpunkt; ; i++)
                             {
-                                fourthCharacter = i;
-                                break;
+                                
+
+                                if (grundliste[i] == ' ')
+                                {
+                                    endpunkt = i;
+                                    break;
+                                }
+
                             }
 
-                        }
+                        string steamid = grundliste.Substring(startpunkt, endpunkt - startpunkt);
+                        steamlist.Add(steamid);
+                        Console.WriteLine("STEAM id: {0}", steamid);
+                                         
+
+                     }
+                        
+
+
+                        Console.WriteLine("third occurrence: {0}", startpunkt);
+                        Console.WriteLine("fourth occurrence: {0}", endpunkt);
+                      
+                        steamlist.ForEach(i => Console.WriteLine(i));                        
+                        
 
 
 
-                    Console.WriteLine("third occurrence: {0}", thirdCharacter);
-                    Console.WriteLine("fourth occurrence: {0}", fourthCharacter);
-
-                    string steamid = grundliste.Substring(thirdCharacter, fourthCharacter - thirdCharacter);
-                    Console.WriteLine("STEAM id: {0}", steamid);
 
 
-                    
+                        //Console.WriteLine("fourth occurrence: {0}", fourthCharacter);
+                        //string suchbegriff4 = " ";
+                        //int fourthCharacter = grundliste.IndexOf(suchbegriff4);
 
 
-                    //Console.WriteLine("fourth occurrence: {0}", fourthCharacter);
-                    //string suchbegriff4 = " ";
-                    //int fourthCharacter = grundliste.IndexOf(suchbegriff4);
 
 
-                   
 
-                    
-                    //Console.WriteLine(grundliste[197]);
+                        //Console.WriteLine(grundliste[197]);
 
+                    }
                 }
             }
         }
     }
-}
