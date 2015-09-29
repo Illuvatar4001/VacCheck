@@ -51,95 +51,32 @@ namespace VacCheck
             {   // Open the text file using a stream reader.
                 using (StreamReader sr = new StreamReader("c:\\condump001.txt"))
                 {
-                    // Read the stream to a string, and write the string to the console.
                     String grundliste = sr.ReadToEnd();
-                    // Console.WriteLine(grundliste);
-
-                    // MAP NAME PARESE
-                    string suchbegriff = "map     : ";
-                    int firstCharacter = grundliste.IndexOf(suchbegriff);
-
-                    string suchbegriff2 = "players";
-                    int lastCharacter = grundliste.IndexOf(suchbegriff2);
-
-                    firstCharacter = firstCharacter + 10;
-                    lastCharacter = lastCharacter - 2;
-
-                    Console.WriteLine("First occurrence: {0}", firstCharacter);
-                    Console.WriteLine("Last occurrence: {0}", lastCharacter);
-
-                    string map = grundliste.Substring(firstCharacter, lastCharacter - firstCharacter);
-
-                    Console.WriteLine("Map played: {0}", map);
-                    Console.WriteLine("=========================");
-
-                    // STEAM ID PARSE ==============================================
-
-                    List<long> steamlist = new List<long>();
                     
-                    string suchbegriff3 = "STEAM";
-                    int endpunkt = 0;
-                    int startpunkt = 0;
-                    long steamid64;
+                    //Use of parseMap function
+                    string mapname;
+                    mapname = Parser.parseMap(grundliste);
 
-                    while (true)
-                    {
+                    //test output map
+                    Console.WriteLine("Map played: {0}", mapname);
+                    
+
+
+                    //Use of ParseSteamIds64 function
+                    List<long> steamidlist;
+                    steamidlist = Parser.parseSteamIds64(grundliste);
+
+                    //test output steam id list
+                    steamidlist.ForEach(i => Console.WriteLine(i));   
+                   
+
+
+                  }
                         
-
-                        
-                        startpunkt = grundliste.IndexOf(suchbegriff3, endpunkt);
-
-                        if (startpunkt == -1)
-                        {
-                            break;
-                        }
-                        
-
-                            for (int i = startpunkt; ; i++)
-                            {
-                                
-
-                                if (grundliste[i] == ' ')
-                                {
-                                    endpunkt = i;
-                                    break;
-                                }
-
-                            }
-
-                        string steamid = grundliste.Substring(startpunkt, endpunkt - startpunkt);
-                        steamid64 = SteamUser.getSteamId64(steamid);
-
-                        steamlist.Add(steamid64);
-                        Console.WriteLine("STEAM id: {0}", steamid);
-                                         
-
-                     }
-                        
-
-
-                        Console.WriteLine("third occurrence: {0}", startpunkt);
-                        Console.WriteLine("fourth occurrence: {0}", endpunkt);
-                      
-                        steamlist.ForEach(i => Console.WriteLine(i));                        
-                        
-
-                        
-                        
-
-
-                        //Console.WriteLine("fourth occurrence: {0}", fourthCharacter);
-                        //string suchbegriff4 = " ";
-                        //int fourthCharacter = grundliste.IndexOf(suchbegriff4);
-
-
-
-
-
-                        //Console.WriteLine(grundliste[197]);
+                                                              
 
                     }
                 }
             }
         }
-    }
+   
