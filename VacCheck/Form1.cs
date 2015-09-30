@@ -61,16 +61,16 @@ namespace VacCheck
 
         private void settings_Click(object sender, EventArgs e)
         {
-            Game mygame = new Game
-            {
-                map = "de_nuke2",
-                date = new DateTime(2001, 2, 2),
+            //Game mygame = new Game
+            //{
+            //    map = "de_nuke2",
+            //    date = new DateTime(2001, 2, 2),
 
-            };
-            Id_GameDataContext mydb = new Id_GameDataContext();
-            mydb.Games.InsertOnSubmit(mygame);
-            textBox1.Text = Convert.ToString(mygame.Id) + mygame.map;
-            mydb.SubmitChanges();
+            //};
+            //Id_GameDataContext mydb = new Id_GameDataContext();
+            //mydb.Games.InsertOnSubmit(mygame);
+            //textBox1.Text = Convert.ToString(mygame.Id) + mygame.map;
+            //mydb.SubmitChanges();
    
 
             //{   // Open the text file using a stream reader.
