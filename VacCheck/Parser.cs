@@ -16,7 +16,7 @@ namespace VacCheck
         {
             string filedata;
             var files = Directory.EnumerateFiles(csgopath, "*.*", SearchOption.TopDirectoryOnly)
-            .Where(s => s.StartsWith("condump") || s.EndsWith(".txt"));
+            .Where(s => s.StartsWith(csgopath+@"\condump") && s.EndsWith(".txt"));
 
             foreach (var file in files)
             {
