@@ -24,14 +24,16 @@ namespace VacCheck
                     filedata = sr.ReadToEnd();
                 }
 
+                Console.WriteLine(filedata);
+                filedata = cleanGrundliste(filedata);
+
                 Game newgame = new Game
                 {
                     map = parseMap(filedata),
                     date = File.GetLastWriteTime(file)
                 };
 
-                Console.WriteLine(filedata);
-                //filedata = cleanGrundliste(filedata);
+
 
                 db.Games.InsertOnSubmit(newgame);
                 db.SubmitChanges();
@@ -154,8 +156,7 @@ namespace VacCheck
 
         static string cleanGrundliste(string grundliste)
         {
-
-            
+                        
 
             string suchbegriff = "\"";
             string suchbegriff2 = "***VAC Check Console Dump***";
@@ -166,9 +167,7 @@ namespace VacCheck
 
             if (startpunkt == -1)
             {
-                grundliste = "A non valid VAC Checker log was used.";
-
-                return grundliste;
+                throw new ArgumentException("A non valid VAC Checker log was used.");
             }
 
             //Deleting of the playernames in the grundliste
