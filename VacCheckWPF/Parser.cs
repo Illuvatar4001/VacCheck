@@ -24,8 +24,8 @@ namespace VacCheckWPF
                     filedata = sr.ReadToEnd();
                 }
 
+                filedata = cleanGrundliste(filedata);
                 Console.WriteLine(filedata);
-                //filedata = cleanGrundliste(filedata);
 
                 Game newgame = new Game
                 {
@@ -178,7 +178,7 @@ namespace VacCheckWPF
             {
 
                 startpunkt = grundliste.IndexOf(suchbegriff, endpunkt);
-                endpunkt = grundliste.IndexOf(suchbegriff, startpunkt);
+                endpunkt = grundliste.IndexOf(suchbegriff, startpunkt+1);
 
                 if (startpunkt == -1)
                 {
