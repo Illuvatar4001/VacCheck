@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace VacCheckWPF
 {
@@ -30,12 +31,23 @@ namespace VacCheckWPF
             VacCheckWPF.VCdbDataContext mydb = new VacCheckWPF.VCdbDataContext();
             //VCdbDataContext mydb = new VCdbDataContext();
             Parser.read_condumps(mydb);
-            var results = from u in mydb.Ids select u;
+            var results = from u in mydb.Ids
+                          join gameid in mydb.Relations on u.Id1 equals gameid.Player_Id into games
+                          from game in mydb.Games where game.Id == (int)games.OrderByDescending(x=> x.Game_Id).First().Game_Id
+                          select new
+                          {
+                              steamid= u.Steam_ID,
+                              vacbanned= u.VACban,
+                              owbanned= u.OWban,
+                              lastdate=game.date,
+                              link = new Uri("http://steamcommunity.com/profiles/"+Convert.ToString(u.Steam_ID))
+                          };
             foreach (var result in results)
             {
-                textbox1.Text = textbox1.Text + "\n" + "  " + Convert.ToString(result.Id1) + "  " + Convert.ToString(result.Steam_ID) + "  ";
+                textbox1.Text = textbox1.Text + "\n" + "  " + Convert.ToString(result.steamid) +  "  " +Convert.ToString(result.lastdate);
             }
-            datagrid1.DataContext = mydb.Ids;
+            grid.ItemsSource = results;
+            datagrid1.ItemsSource = mydb.Ids;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -47,6 +59,16 @@ namespace VacCheckWPF
             vCdbDataSetIdsTableAdapter.Fill(vCdbDataSet.Ids);
             System.Windows.Data.CollectionViewSource idsViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("idsViewSource")));
             idsViewSource.View.MoveCurrentToFirst();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void DG_Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            Hyperlink link = (Hyperlink)e.OriginalSource;
+            Process.Start(link.NavigateUri.AbsoluteUri);
         }
     }
 }

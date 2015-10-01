@@ -69,6 +69,8 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="Game.cs" />
+    <Compile Include="Id.cs" />
     <Compile Include="SteamUser.cs" />
     <Compile Include="VCdb1.designer.cs">
       <AutoGen>True</AutoGen>
