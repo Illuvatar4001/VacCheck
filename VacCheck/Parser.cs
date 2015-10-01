@@ -165,20 +165,23 @@ namespace VacCheck
             //test for valid VAC Checker log
             int startpunkt = grundliste.IndexOf(suchbegriff2);
 
-            if (startpunkt == -1)
-            {
-                throw new ArgumentException("A non valid VAC Checker log was used.");
-            }
+            
+            //if (startpunkt == -1)
+            //{
+            //    throw new ArgumentException("A non valid VAC Checker log was used.");
+            //}
 
             //Deleting of the playernames in the grundliste
             startpunkt = 0;
             int endpunkt = 0;
+            int shiftedstartpunkt;
 
             while (true)
             {
 
                 startpunkt = grundliste.IndexOf(suchbegriff, endpunkt);
-                endpunkt = grundliste.IndexOf(suchbegriff, startpunkt);
+                shiftedstartpunkt = startpunkt + 1;
+                endpunkt = grundliste.IndexOf(suchbegriff, shiftedstartpunkt);
 
                 if (startpunkt == -1)
                 {
