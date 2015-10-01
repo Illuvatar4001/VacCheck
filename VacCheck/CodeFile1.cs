@@ -2,7 +2,7 @@
 
 
 
-void function(int a)
+void function(ref int a)
 {
     a=3;
 }
