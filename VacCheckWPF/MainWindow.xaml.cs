@@ -36,6 +36,17 @@ namespace VacCheckWPF
                 textbox1.Text = textbox1.Text + "\n" + "  " + Convert.ToString(result.Id1) + "  " + Convert.ToString(result.Steam_ID) + "  ";
             }
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            VacCheckWPF.VCdbDataSet vCdbDataSet = ((VacCheckWPF.VCdbDataSet)(this.FindResource("vCdbDataSet")));
+            // Load data into the table Ids. You can modify this code as needed.
+            VacCheckWPF.VCdbDataSetTableAdapters.IdsTableAdapter vCdbDataSetIdsTableAdapter = new VacCheckWPF.VCdbDataSetTableAdapters.IdsTableAdapter();
+            vCdbDataSetIdsTableAdapter.Fill(vCdbDataSet.Ids);
+            System.Windows.Data.CollectionViewSource idsViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("idsViewSource")));
+            idsViewSource.View.MoveCurrentToFirst();
+        }
     }
 }
 

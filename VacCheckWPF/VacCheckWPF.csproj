@@ -75,6 +75,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VCdb.dbml</DependentUpon>
     </Compile>
+    <Compile Include="VCdbDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VCdbDataSet.xsd</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -121,6 +126,17 @@
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>VCdb1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </None>
+    <None Include="VCdbDataSet.xsc">
+      <DependentUpon>VCdbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="VCdbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>VCdbDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="VCdbDataSet.xss">
+      <DependentUpon>VCdbDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -10,9 +10,11 @@ namespace VacCheckWPF
     static class Parser
     {
         static string csgopath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+        
         //static string csgopath=@"E:\Visual Studio Projects\C#\VAc\VacCheck\VacCheck";
         public static void read_condumps(VCdbDataContext db)
         {
+            //csgopath = Properties.Settings.Default.csgopath;
             string filedata;
             var files = Directory.EnumerateFiles(csgopath, "*.*", SearchOption.TopDirectoryOnly)
             .Where(s => s.StartsWith(csgopath+@"\condump") && s.EndsWith(".txt"));

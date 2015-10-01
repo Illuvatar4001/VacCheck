@@ -44,5 +44,23 @@ namespace VacCheckWPF.Properties {
                 return ((string)(this["VCdbConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool first_start {
+            get {
+                return ((bool)(this["first_start"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string csgopath {
+            get {
+                return ((string)(this["csgopath"]));
+            }
+        }
     }
 }
