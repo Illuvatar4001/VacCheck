@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VacCheck
+namespace VacCheckWPF
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -23,7 +23,7 @@ namespace VacCheck
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Id_Game")]
-	public partial class Id_GameDataContext : System.Data.Linq.DataContext
+	public partial class VCdbDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -33,39 +33,39 @@ namespace VacCheck
     partial void InsertGame(Game instance);
     partial void UpdateGame(Game instance);
     partial void DeleteGame(Game instance);
-    partial void InsertRelation(Relation instance);
-    partial void UpdateRelation(Relation instance);
-    partial void DeleteRelation(Relation instance);
     partial void InsertId(Id instance);
     partial void UpdateId(Id instance);
     partial void DeleteId(Id instance);
+    partial void InsertRelation(Relation instance);
+    partial void UpdateRelation(Relation instance);
+    partial void DeleteRelation(Relation instance);
     #endregion
 		
-		public Id_GameDataContext() : 
-				base(global::VacCheck.Properties.Settings.Default.Id_GameConnectionString, mappingSource)
+		public VCdbDataContext() : 
+				base(global::VacCheckWPF.Properties.Settings.Default.Id_GameConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public Id_GameDataContext(string connection) : 
+		public VCdbDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public Id_GameDataContext(System.Data.IDbConnection connection) : 
+		public VCdbDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public Id_GameDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public VCdbDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public Id_GameDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public VCdbDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
@@ -79,19 +79,19 @@ namespace VacCheck
 			}
 		}
 		
-		public System.Data.Linq.Table<Relation> Relations
-		{
-			get
-			{
-				return this.GetTable<Relation>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Id> Ids
 		{
 			get
 			{
 				return this.GetTable<Id>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Relation> Relations
+		{
+			get
+			{
+				return this.GetTable<Relation>();
 			}
 		}
 	}
@@ -181,116 +181,6 @@ namespace VacCheck
 					this._map = value;
 					this.SendPropertyChanged("map");
 					this.OnmapChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Relations")]
-	public partial class Relation : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.Nullable<int> _Game_Id;
-		
-		private System.Nullable<int> _Player_Id;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnGame_IdChanging(System.Nullable<int> value);
-    partial void OnGame_IdChanged();
-    partial void OnPlayer_IdChanging(System.Nullable<int> value);
-    partial void OnPlayer_IdChanged();
-    #endregion
-		
-		public Relation()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Game_Id", DbType="Int")]
-		public System.Nullable<int> Game_Id
-		{
-			get
-			{
-				return this._Game_Id;
-			}
-			set
-			{
-				if ((this._Game_Id != value))
-				{
-					this.OnGame_IdChanging(value);
-					this.SendPropertyChanging();
-					this._Game_Id = value;
-					this.SendPropertyChanged("Game_Id");
-					this.OnGame_IdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Player_Id", DbType="Int")]
-		public System.Nullable<int> Player_Id
-		{
-			get
-			{
-				return this._Player_Id;
-			}
-			set
-			{
-				if ((this._Player_Id != value))
-				{
-					this.OnPlayer_IdChanging(value);
-					this.SendPropertyChanging();
-					this._Player_Id = value;
-					this.SendPropertyChanged("Player_Id");
-					this.OnPlayer_IdChanged();
 				}
 			}
 		}
@@ -425,6 +315,116 @@ namespace VacCheck
 					this._VACban = value;
 					this.SendPropertyChanged("VACban");
 					this.OnVACbanChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Relations")]
+	public partial class Relation : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _Game_Id;
+		
+		private System.Nullable<int> _Player_Id;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnGame_IdChanging(System.Nullable<int> value);
+    partial void OnGame_IdChanged();
+    partial void OnPlayer_IdChanging(System.Nullable<int> value);
+    partial void OnPlayer_IdChanged();
+    #endregion
+		
+		public Relation()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Game_Id", DbType="Int")]
+		public System.Nullable<int> Game_Id
+		{
+			get
+			{
+				return this._Game_Id;
+			}
+			set
+			{
+				if ((this._Game_Id != value))
+				{
+					this.OnGame_IdChanging(value);
+					this.SendPropertyChanging();
+					this._Game_Id = value;
+					this.SendPropertyChanged("Game_Id");
+					this.OnGame_IdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Player_Id", DbType="Int")]
+		public System.Nullable<int> Player_Id
+		{
+			get
+			{
+				return this._Player_Id;
+			}
+			set
+			{
+				if ((this._Player_Id != value))
+				{
+					this.OnPlayer_IdChanging(value);
+					this.SendPropertyChanging();
+					this._Player_Id = value;
+					this.SendPropertyChanged("Player_Id");
+					this.OnPlayer_IdChanged();
 				}
 			}
 		}

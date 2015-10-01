@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="VCdb">
+  <DataContextMoniker Name="/VCdbDataContext" />
+  <nestedChildShapes>
+    <classShape Id="67b707b9-d1aa-457c-be57-6fe782005fba" absoluteBounds="3.25, 1, 2, 1.3862939453125">
+      <DataClassMoniker Name="/VCdbDataContext/Game" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5b6abcda-ddfb-46e8-96dc-1308c25624aa" absoluteBounds="3.265, 1.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="23e41b45-c2f9-4b9b-b669-32adc402b79f" absoluteBounds="6.875, 1.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/VCdbDataContext/Id" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0f92f2bc-ceb0-4267-b68b-4862d1ae27a5" absoluteBounds="6.89, 1.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b4391bc7-e353-402e-84d5-8ffa254922da" absoluteBounds="4.375, 3.25, 2, 1.3862939453125">
+      <DataClassMoniker Name="/VCdbDataContext/Relation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8b718120-2177-41bc-9358-e76a9863a2d3" absoluteBounds="4.39, 3.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
