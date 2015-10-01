@@ -23,11 +23,15 @@ namespace VacCheck
                 {
                     filedata = sr.ReadToEnd();
                 }
+
                 Game newgame = new Game
                 {
                     map = parseMap(filedata),
                     date = File.GetLastWriteTime(file)
                 };
+
+                Console.WriteLine(filedata);
+                //filedata = cleanGrundliste(filedata);
 
                 db.Games.InsertOnSubmit(newgame);
                 db.SubmitChanges();
@@ -146,8 +150,50 @@ namespace VacCheck
             }
 
             return steamlist;
-
         }
+
+        static string cleanGrundliste(string grundliste)
+        {
+
+            
+
+            string suchbegriff = "\"";
+            string suchbegriff2 = "***VAC Check Console Dump***";
+
+
+            //test for valid VAC Checker log
+            int startpunkt = grundliste.IndexOf(suchbegriff2);
+
+            if (startpunkt == -1)
+            {
+                grundliste = "A non valid VAC Checker log was used.";
+
+                return grundliste;
+            }
+
+            //Deleting of the playernames in the grundliste
+            startpunkt = 0;
+            int endpunkt = 0;
+
+            while (true)
+            {
+
+                startpunkt = grundliste.IndexOf(suchbegriff, endpunkt);
+                endpunkt = grundliste.IndexOf(suchbegriff, startpunkt);
+
+                if (startpunkt == -1)
+                {
+                    Console.WriteLine(grundliste);
+                    return grundliste;
+                }
+
+                grundliste = grundliste.Remove(startpunkt, endpunkt - startpunkt);
+            }
+
+            
+            
+        }
+        
     }
 }
     
