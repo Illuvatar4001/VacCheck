@@ -25,7 +25,7 @@ namespace VacCheckWPF
                 }
 
                 Console.WriteLine(filedata);
-                filedata = cleanGrundliste(filedata);
+                //filedata = cleanGrundliste(filedata);
 
                 Game newgame = new Game
                 {
@@ -167,7 +167,7 @@ namespace VacCheckWPF
 
             if (startpunkt == -1)
             {
-                throw new ArgumentException("A non valid VAC Checker log was used.");
+            //    throw new ArgumentException("A non valid VAC Checker log was used.");
             }
 
             //Deleting of the playernames in the grundliste

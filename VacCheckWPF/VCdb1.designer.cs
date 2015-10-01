@@ -22,7 +22,7 @@ namespace VacCheckWPF
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Id_Game")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="VCdb")]
 	public partial class VCdbDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -42,7 +42,7 @@ namespace VacCheckWPF
     #endregion
 		
 		public VCdbDataContext() : 
-				base(global::VacCheckWPF.Properties.Settings.Default.Id_GameConnectionString, mappingSource)
+				base(global::VacCheckWPF.Properties.Settings.Default.VCdbConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
