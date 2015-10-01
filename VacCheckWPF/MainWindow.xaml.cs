@@ -48,6 +48,11 @@ namespace VacCheckWPF
             System.Windows.Data.CollectionViewSource idsViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("idsViewSource")));
             idsViewSource.View.MoveCurrentToFirst();
         }
+
+        private void datagrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
 
