@@ -12,7 +12,7 @@
         <Button Content="Button" HorizontalAlignment="Left" Height="36" Margin="167,23,0,0" VerticalAlignment="Top" Width="100"/>
         <Button Content="Button" HorizontalAlignment="Left" Height="37" Margin="358,22,0,0" VerticalAlignment="Top" Width="122"/>
         <TextBox x:Name="textbox1" HorizontalAlignment="Left" Height="155" Margin="70,99,0,0" TextWrapping="Wrap" Text="{Binding Id, Mode=OneWay}" VerticalAlignment="Top" Width="181"/>
-        <DataGrid HorizontalAlignment="Left" Margin="278,99,0,0" VerticalAlignment="Top" Height="146" Width="188" ItemsSource="{Binding}"/>
+        <DataGrid x:Name="datagrid1" HorizontalAlignment="Left" Margin="278,99,0,0" VerticalAlignment="Top" Height="146" Width="188" ItemsSource="{Binding}"/>
 
     </Grid>
 </Window>

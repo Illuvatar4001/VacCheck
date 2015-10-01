@@ -28,13 +28,14 @@ namespace VacCheckWPF
         private void readbut_Click(object sender, RoutedEventArgs e)
         {
             VacCheckWPF.VCdbDataContext mydb = new VacCheckWPF.VCdbDataContext();
-           // VCdbDataContext mydb = new VCdbDataContext();
+            //VCdbDataContext mydb = new VCdbDataContext();
             Parser.read_condumps(mydb);
             var results = from u in mydb.Ids select u;
             foreach (var result in results)
             {
                 textbox1.Text = textbox1.Text + "\n" + "  " + Convert.ToString(result.Id1) + "  " + Convert.ToString(result.Steam_ID) + "  ";
             }
+            datagrid1.DataContext = mydb.Ids;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
