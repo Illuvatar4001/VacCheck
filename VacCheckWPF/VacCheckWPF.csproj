@@ -71,7 +71,6 @@
     </ApplicationDefinition>
     <Compile Include="Game.cs" />
     <Compile Include="Id.cs" />
-    <Compile Include="Request.cs" />
     <Compile Include="SteamUser.cs" />
     <Compile Include="VCdb1.designer.cs">
       <AutoGen>True</AutoGen>

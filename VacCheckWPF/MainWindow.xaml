@@ -11,10 +11,8 @@
     <Grid DataContext="{StaticResource idsViewSource}" Margin="0,0,2,0">
         <Button x:Name="readbut" Content="Read Dumps" HorizontalAlignment="Left" Height="40" Margin="30,20,0,0" VerticalAlignment="Top" Width="120" Click="readbut_Click"/>
         <Button Content="Check for Ban" HorizontalAlignment="Left" Height="40" Width="120" Margin="180,20,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="40" Margin="640,20,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click" RenderTransformOrigin="0.492,0.475"/>
-        <TextBox x:Name="textbox1" HorizontalAlignment="Left" Height="155" Margin="793,247,0,0" TextWrapping="Wrap" Text="{Binding Id, Mode=OneWay}" VerticalAlignment="Top" Width="190"/>
-        <DataGrid x:Name="datagrid1" HorizontalAlignment="Left" Margin="793,80,0,0" VerticalAlignment="Top" Height="146" Width="190" ItemsSource="{Binding}"/>
-        <DataGrid x:Name="grid" HorizontalAlignment="Left" Height="326" Margin="30,80,0,0" VerticalAlignment="Top" Width="730">
+        <Button Content="Button" HorizontalAlignment="Left" Height="40" Margin="882,20,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click" RenderTransformOrigin="0.492,0.475"/>
+        <DataGrid x:Name="grid" HorizontalAlignment="Left" Height="326" Margin="30,80,0,0" VerticalAlignment="Top" Width="972">
             <DataGrid.Resources>
                 <Style TargetType="Hyperlink">
                     <EventSetter Event="Click" Handler="DG_Hyperlink_Click"/>
