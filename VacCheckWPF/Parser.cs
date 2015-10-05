@@ -10,9 +10,10 @@ namespace VacCheckWPF
     static class Parser
     {
 
-        string temppath;
-
-        static string csgopath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+        static string temppath;
+        //string fmt = "0000";
+        //static string csgopath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+        static string csgopath = Directory.GetCurrentDirectory();
         
 
         //static string csgopath=@"E:\Visual Studio Projects\C#\VAc\VacCheck\VacCheck";
@@ -23,9 +24,9 @@ namespace VacCheckWPF
             var files = Directory.EnumerateFiles(csgopath, "*.*", SearchOption.TopDirectoryOnly)
             .Where(s => s.StartsWith(csgopath + @"\condump") && s.EndsWith(".txt"));
 
-            if (!Directory.Exists("Condump Archieve"))
+            if (!Directory.Exists("CondumpArchieve"))
             {
-                Directory.CreateDirectory("Condump Archieve");
+                Directory.CreateDirectory("CondumpArchieve");
             }
 
             foreach (var file in files)
@@ -94,12 +95,21 @@ namespace VacCheckWPF
                 }
 
                 temppath = file.ToString();
-                
-                File.Move(file.ToString(), file.ToString() + "ConDumpArchieveNumber" + Properties.Settings.Default.DumpNumber);
+                temppath = temppath.Remove(temppath.Length - 14, 14);
+
+                temppath = temppath + @"CondumpArchieve\" + "ConDumpVacChecked" + Properties.Settings.Default.DumpNumber.ToString("0000") + ".txt";
+
+
+
+                File.Move(file.ToString(), temppath);
+                //+ @"Condump Archieve\" + "ConDumpVacChecked" + Properties.Settings.Default.DumpNumber.ToString("0000") + ".txt");
+
+                Properties.Settings.Default.DumpNumber++;
 
             }
 
-            
+            Properties.Settings.Default.Save();
+
 
         }
 
