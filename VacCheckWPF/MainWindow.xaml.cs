@@ -36,7 +36,10 @@ namespace VacCheckWPF
             var steamids = from u in mydb.Ids select u;
 
             //where !u.OWban || !u.VACban
-            Parallel.ForEach(steamids, u =>
+            
+            Parallel.ForEach(steamids,
+                new ParallelOptions { MaxDegreeOfParallelism=100 },
+                u =>
             {
                 u.isbanned();
             });
