@@ -9,15 +9,24 @@ namespace VacCheckWPF
 {
     static class Parser
     {
+
+        string temppath;
+
         static string csgopath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
         
+
         //static string csgopath=@"E:\Visual Studio Projects\C#\VAc\VacCheck\VacCheck";
         public static void read_condumps(VCdbDataContext db)
         {
             //csgopath = Properties.Settings.Default.csgopath;
             string filedata;
             var files = Directory.EnumerateFiles(csgopath, "*.*", SearchOption.TopDirectoryOnly)
-            .Where(s => s.StartsWith(csgopath+@"\condump") && s.EndsWith(".txt"));
+            .Where(s => s.StartsWith(csgopath + @"\condump") && s.EndsWith(".txt"));
+
+            if (!Directory.Exists("Condump Archieve"))
+            {
+                Directory.CreateDirectory("Condump Archieve");
+            }
 
             foreach (var file in files)
             {
@@ -46,7 +55,7 @@ namespace VacCheckWPF
                 {
                     int playerid;
 
-                    if(db.Ids.Any(entry => entry.Steam_ID==steamid))
+                    if (db.Ids.Any(entry => entry.Steam_ID == steamid))
                     {
                         playerid = db.Ids.First(entry => entry.Steam_ID == steamid).Id1;
                     }
@@ -70,7 +79,7 @@ namespace VacCheckWPF
                     //    Id newsteamid= new Id
                     //    {
                     //        Steam_ID=steamid
-                        
+
                     //    };
                     //    db.Ids.InsertOnSubmit(newsteamid);
                     //    db.SubmitChanges();
@@ -79,10 +88,18 @@ namespace VacCheckWPF
 
                     db.Relations.InsertOnSubmit(new Relation { Game_Id = newgame.Id, Player_Id = playerid });
 
+                    
+
+
                 }
+
+                temppath = file.ToString();
+                
+                File.Move(file.ToString(), file.ToString() + "ConDumpArchieveNumber" + Properties.Settings.Default.DumpNumber);
+
             }
 
-
+            
 
         }
 
@@ -158,7 +175,7 @@ namespace VacCheckWPF
 
         static string cleanGrundliste(string grundliste)
         {
-                        
+
 
             string suchbegriff = "\"";
             string suchbegriff2 = "***VAC Check Console Dump***";
@@ -169,7 +186,7 @@ namespace VacCheckWPF
 
             if (startpunkt == -1)
             {
-            //    throw new ArgumentException("A non valid VAC Checker log was used.");
+                //    throw new ArgumentException("A non valid VAC Checker log was used.");
             }
 
             //Deleting of the playernames in the grundliste
@@ -180,7 +197,7 @@ namespace VacCheckWPF
             {
 
                 startpunkt = grundliste.IndexOf(suchbegriff, endpunkt);
-                endpunkt = grundliste.IndexOf(suchbegriff, startpunkt+1);
+                endpunkt = grundliste.IndexOf(suchbegriff, startpunkt + 1);
 
                 if (startpunkt == -1)
                 {
@@ -191,10 +208,15 @@ namespace VacCheckWPF
                 grundliste = grundliste.Remove(startpunkt, endpunkt - startpunkt);
             }
 
-            
-            
+
+
         }
+
         
+
+
+
+
+        }
     }
-}
-    
+

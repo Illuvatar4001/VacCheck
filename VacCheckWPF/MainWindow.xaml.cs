@@ -76,8 +76,8 @@ namespace VacCheckWPF
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
-            
+
+            Request.RequestAPI();
             Int64 steamid = 76561197998210362;
             string ergebnis = SteamUser.isbanned(steamid);
             Console.WriteLine(ergebnis);
