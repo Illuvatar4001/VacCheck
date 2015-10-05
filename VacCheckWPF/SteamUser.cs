@@ -37,7 +37,7 @@ namespace VacCheckWPF
             this.steamid = getSteamId64(SteamdID32);
         }
 
-        public string isbanned()
+        public static string isbanned(Int64 steamid)
         {
 
             WebRequest request = WebRequest.Create(
@@ -63,8 +63,8 @@ namespace VacCheckWPF
 
             var ser = new JavaScriptSerializer();
             GetPlayerBansRespons resp= ser.Deserialize<GetPlayerBansRespons>(responseFromServer);
-
-            return "This Account has" + Convert.ToString(resp.players[0].NumberOfVACBans) + " " + Convert.ToString(resp.players[0].NumberOfGameBans);
+            return Convert.ToString(resp.players[0].NumberOfVACBans) + Convert.ToString(resp.players[0].NumberOfGameBans);
+           // return "This Account has" + Convert.ToString(resp.players[0].NumberOfVACBans) + " " + Convert.ToString(resp.players[0].NumberOfGameBans);
         }
     }
 }

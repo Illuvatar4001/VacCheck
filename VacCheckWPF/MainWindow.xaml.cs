@@ -45,6 +45,9 @@ namespace VacCheckWPF
             foreach (var result in results)
             {
                 textbox1.Text = textbox1.Text + "\n" + "  " + Convert.ToString(result.steamid) +  "  " +Convert.ToString(result.lastdate);
+
+
+                
             }
             grid.ItemsSource = results;
             datagrid1.ItemsSource = mydb.Ids;
@@ -69,6 +72,16 @@ namespace VacCheckWPF
         {
             Hyperlink link = (Hyperlink)e.OriginalSource;
             Process.Start(link.NavigateUri.AbsoluteUri);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            
+            
+            Int64 steamid = 76561197998210362;
+            string ergebnis = SteamUser.isbanned(steamid);
+            Console.WriteLine(ergebnis);
+            
         }
     }
 }
