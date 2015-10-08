@@ -20,6 +20,12 @@ namespace VacCheckWPF
         public void isbanned()
         {
 
+
+            if (this.Steam_ID==-1)
+            {
+                return;
+            }
+
             WebRequest request = WebRequest.Create(
               "https://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=12A1D1DE83F9932934EDD6DF2BA00463&steamids=" + Convert.ToString(this.Steam_ID));
 
