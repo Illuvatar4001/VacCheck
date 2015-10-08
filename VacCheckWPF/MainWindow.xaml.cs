@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using System.Web;
+using System.Web.Script.Serialization;
+using System.Net;
+using System.IO;
 
 namespace VacCheckWPF
 {
@@ -87,6 +91,36 @@ namespace VacCheckWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            WebRequest request = WebRequest.Create(
+              "https://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=12A1D1DE83F9932934EDD6DF2BA00463&steamids=" + Convert.ToString(76561197968389378
+));
+
+
+            request.Credentials = CredentialCache.DefaultCredentials;
+
+
+            WebResponse response = request.GetResponse();
+
+
+            Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+
+
+            Stream dataStream = response.GetResponseStream();
+
+
+            StreamReader reader = new StreamReader(dataStream);
+
+
+            string responseFromServer = reader.ReadToEnd();
+
+            var ser = new JavaScriptSerializer();
+            GetPlayerBansRespons resp = ser.Deserialize<GetPlayerBansRespons>(responseFromServer);
+            if (resp.players.Count == 1)
+            {
+                bool bool1 = (resp.players[0].NumberOfVACBans != 0);
+                bool bool2 = (resp.players[0].NumberOfGameBans != 0);
+            }
+            return;
         }
 
         private void DG_Hyperlink_Click(object sender, RoutedEventArgs e)

@@ -49,8 +49,11 @@ namespace VacCheckWPF
 
             var ser = new JavaScriptSerializer();
             GetPlayerBansRespons resp = ser.Deserialize<GetPlayerBansRespons>(responseFromServer);
-            this.VACban = (resp.players[0].NumberOfVACBans!=0);
-            this.OWban = (resp.players[0].NumberOfGameBans != 0);
+            if (resp.players.Count == 1)
+            {
+                this.VACban = (resp.players[0].NumberOfVACBans != 0);
+                this.OWban = (resp.players[0].NumberOfGameBans != 0);
+            }
             
 
         }
