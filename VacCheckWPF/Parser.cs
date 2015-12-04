@@ -36,8 +36,19 @@ namespace VacCheckWPF
                     filedata = sr.ReadToEnd();
                 }
 
-                filedata = cleanGrundliste(filedata);
-                Console.WriteLine(filedata);
+
+
+                try
+                {
+                    filedata = cleanGrundliste(filedata);
+                    Console.WriteLine(filedata);
+                }
+
+                catch
+                {
+                    System.Windows.MessageBox.Show("File: " + file + " is empty/damaged");
+                    continue;
+                }
 
                 Game newgame = new Game
                 {
@@ -116,21 +127,36 @@ namespace VacCheckWPF
 
         static string parseMap(string grundliste)
         {
+            
+            
             // MAP PARSE ==============================                                            
             //declare search terms
             string suchbegriff = "map     : ";
-            string suchbegriff2 = "players";
+           // string suchbegriff2 = "players";
+            string suchbegriff2 = "\r\n";
+            string map;
 
             //Search for index of searchterms
             int firstCharacter = grundliste.IndexOf(suchbegriff);
-            int lastCharacter = grundliste.IndexOf(suchbegriff2);
+            int lastCharacter = grundliste.IndexOf(suchbegriff2, firstCharacter);
+            //int lastCharacter = grundliste.IndexOf(suchbegriff2);
 
             //Index correction
             firstCharacter = firstCharacter + 10;
-            lastCharacter = lastCharacter - 2;
+            //lastCharacter = lastCharacter + 2;
+
+
 
             //generate substring and return
-            string map = grundliste.Substring(firstCharacter, lastCharacter - firstCharacter);
+            try
+            {
+                map = grundliste.Substring(firstCharacter, lastCharacter - firstCharacter);
+            }
+            catch (Exception)
+            {
+
+                map = "Error";
+            }
             return map;
 
         }
@@ -216,6 +242,8 @@ namespace VacCheckWPF
                 }
 
                 grundliste = grundliste.Remove(startpunkt, endpunkt - startpunkt);
+
+
             }
 
 
