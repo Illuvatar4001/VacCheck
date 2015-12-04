@@ -138,6 +138,10 @@ namespace VacCheckWPF
 
             //Search for index of searchterms
             int firstCharacter = grundliste.IndexOf(suchbegriff);
+
+            try
+            {
+
             int lastCharacter = grundliste.IndexOf(suchbegriff2, firstCharacter);
             //int lastCharacter = grundliste.IndexOf(suchbegriff2);
 
@@ -148,8 +152,7 @@ namespace VacCheckWPF
 
 
             //generate substring and return
-            try
-            {
+           
                 map = grundliste.Substring(firstCharacter, lastCharacter - firstCharacter);
             }
             catch (Exception)
